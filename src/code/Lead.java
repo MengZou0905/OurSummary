@@ -21,8 +21,8 @@ import java.util.ArrayList;
  * 		1: stem, 2: no stem, default = 1
  * args[6]:Choose whether you need remove the stop words.
  * 		If you need remove the stop words, you should input the path of stop word list. 
- *  	Or we have prepared an English stop words list as file ¡°stopword_Eng¡±, you can use it by input ¡°y¡±.
- *   	If you don¡¯t need remove the stop words, please input ¡°n¡±.
+ *  	Or we have prepared an English stop words list as file ï¿½ï¿½stopword_Engï¿½ï¿½, you can use it by input ï¿½ï¿½yï¿½ï¿½.
+ *   	If you donï¿½ï¿½t need remove the stop words, please input ï¿½ï¿½nï¿½ï¿½.
  * 
  * */
 
@@ -35,6 +35,15 @@ public class Lead {
     {
     	
     	/* Read files */
+    	/*
+    	arg[0] = file + System.getProperty("file.separator") + fOrd.getName();
+		arg[1] = outFile + System.getProperty("file.separator") + fOrd.getName().replace("utf8", "");
+		arg[2] = "2"; // 2-English
+		arg[3] = "2"; // single,multi,topic
+		arg[4] = "100"; // summary çš„é•¿åº¦
+		arg[5] = "1"; // stemmer or not
+		arg[6] = "y"; // stopword or not
+		*/
     	if (args[3].equals("1"))
         {
     		String[] singleFile = new String[1];
@@ -44,9 +53,10 @@ public class Lead {
         }
     	else if (args[3].equals("2")|| args[3].equals("3"))
         {
-    		File myfile = new File(args[0]);
+    		File myfile = new File(args[0]);// 
             myDoc.maxlen = Integer.parseInt(args[4]);
             myDoc.readfile(myfile.list(),args[0],args[2], args[6]);
+            // all the files under the dir, dir, language, stopword or not
         }
     	
     	/* Get abstract */

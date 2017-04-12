@@ -66,6 +66,7 @@ public class Doc {
   }
   
   //read file from the documents
+  //all the files under the dir, dir, language, stopword or not
   public void readfile(String[] rfiles,String filepath,String language, String stopwordPath) throws IOException {
       int i = 0;
       lRange = new int[rfiles.length];
@@ -97,7 +98,7 @@ public class Doc {
 			if (language.equals("3"))//3 represent other
 				tmp = mytoken.tokenizeEng(path, stopwordPath);
           int len = tmp.size();
-          
+          // merge each file into one file.
           lRange[i] = totalLen;
           totalLen += len;
           rRange[i] = totalLen;

@@ -27,8 +27,8 @@ import lpsolve.*;
  * 		1: stem, 2: no stem, default = 1
  * args[6]:Choose whether you need remove the stop words.
  * 		If you need remove the stop words, you should input the path of stop word list. 
- *  	Or we have prepared an English stop words list as file ¡°stopword_Eng¡±, you can use it by input ¡°y¡±.
- *   	If you don¡¯t need remove the stop words, please input ¡°n¡±.
+ *  	Or we have prepared an English stop words list as file ï¿½ï¿½stopword_Engï¿½ï¿½, you can use it by input ï¿½ï¿½yï¿½ï¿½.
+ *   	If you don't need remove the stop words, please input 'n'.
  * 
  * */
 

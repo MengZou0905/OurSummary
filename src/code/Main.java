@@ -103,11 +103,11 @@ public class Main {
 			arg = new String[7];
 			arg[0] = file + System.getProperty("file.separator") + fOrd.getName();
 			arg[1] = outFile + System.getProperty("file.separator") + fOrd.getName().replace("utf8", "");
-			arg[2] = "2";
-			arg[3] = "1";
+			arg[2] = "2"; // 2-English
+			arg[3] = "2"; // single,multi,topic
 			arg[4] = "100"; // summary 的长度
 			arg[5] = "1"; // stemmer or not
-			arg[6] = "y";
+			arg[6] = "y"; // stopword or not
  			lead.Summarize(arg);
 			System.out.println("Lead!");
 			for(String arg_:arg){

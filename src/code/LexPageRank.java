@@ -64,7 +64,7 @@ public class LexPageRank {
     	/* Calculate sentences' similarity matrix and construct link or not matrix depending on the similarity matrix */
     	myDoc.calcTfidf(Integer.parseInt(args[3]), Integer.parseInt(args[5]));
     	myDoc.calcSim();
-    	C = new int[myDoc.snum];
+    	C = new int[myDoc.snum]; // remember the chosen links' num for each node
     	linkOrNot = new int[myDoc.snum][myDoc.snum];
     	double linkThresh = 0.1;
     	if (Double.parseDouble(args[10])>=0){
@@ -99,10 +99,10 @@ public class LexPageRank {
 				double nowSum = 0.0;
 			    for(int j = 0; j < myDoc.snum; ++j) {
 			    	if(linkOrNot[i][j] == 1) {
-			    		nowSum = nowSum + uOld[j] / (1.0 * C[j]);
+			    		nowSum = nowSum + uOld[j] / (1.0 * C[j]); // collect the score from adj nodes
 			    	}
 			    }
-			    u[i] = (1 - alpha) + alpha * nowSum;
+			    u[i] = (1 - alpha) + alpha * nowSum; // random walk
 			}
 			minus = 0.0;
 			for (int i = 0; i < myDoc.snum; i++) {

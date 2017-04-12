@@ -96,12 +96,12 @@ public class TextRank {
     	//Calculate the TextRank score of sentences
     	double[] uOld = new double[myDoc.snum];
     	double[] u = new double[myDoc.snum];
-    	for(int i = 0; i < myDoc.snum; ++i) {
+    	for(int i = 0; i < myDoc.snum; ++i) {// init the score lists
     		uOld[i] = 1.0;
     		u[i] = 1.0;
     	}
     			
-    	double eps = 0.00001, alpha = 0.85 , minus = 1.0;
+    	double eps = 0.00001, alpha = 0.85 , minus = 1.0;// minus: the change after each iteration
     			
     	while (minus > eps) {
     		uOld = u;
@@ -110,13 +110,14 @@ public class TextRank {
 				for (int j = 0; j < myDoc.snum; j++) {
 					if(j == i) continue;
 					else {
-						sumSim = sumSim + similarity[j][i] * uOld[j];
-					}
+						sumSim = sumSim + similarity[j][i] * uOld[j];// A node's new similarity = sum of old_score * edge_weight
+					} 
 					
 				}
-				u[i] = alpha * sumSim + (1 - alpha);
+				u[i] = alpha * sumSim + (1 - alpha); // random walk
 			}
 			minus = 0.0;
+            // calculate the overall score change
 			for (int j = 0; j < myDoc.snum; j++) {
 				double add = java.lang.Math.abs(u[j] - uOld[j]);
 				minus += add;
